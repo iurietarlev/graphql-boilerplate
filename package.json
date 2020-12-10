@@ -1,0 +1,40 @@
+{
+  "name": "graphql-basics",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node dist/index.js",
+    "dev": "env-cmd -f ./config/dev.env nodemon src/index.js --ext js,gql,graphql --exec babel-node",
+    "test": "env-cmd -f ./config/test.env jest --watch --runInBand",
+    "heroku-postbuild": "babel src --out-dir dist --copy-files",
+    "get-schema": "graphql codegen --dotenv config/dev.env"
+  },
+  "jest": {
+    "globalSetup": "./tests/jestConfig/globalSetup.js",
+    "globalTeardown": "./tests/jestConfig/globalTeardown.js"
+  },
+  "dependencies": {
+    "@babel/polyfill": "7.0.0",
+    "@graphql-tools/graphql-file-loader": "^6.2.5",
+    "@graphql-tools/load": "^6.2.5",
+    "apollo-boost": "^0.4.9",
+    "apollo-server": "^2.18.2",
+    "babel-cli": "6.26.0",
+    "babel-plugin-transform-object-rest-spread": "6.26.0",
+    "babel-preset-env": "1.7.0",
+    "babel-register": "^6.26.0",
+    "bcrypt": "^5.0.0",
+    "cross-fetch": "^3.0.6",
+    "env-cmd": "^10.1.0",
+    "graphql-cli": "^4.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "prisma-binding": "^2.3.16"
+  },
+  "devDependencies": {
+    "@graphql-cli/codegen": "^1.17.13",
+    "@graphql-codegen/schema-ast": "^1.18.0",
+    "jest": "^23.5.0",
+    "nodemon": "^2.0.6"
+  }
+}
